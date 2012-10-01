@@ -10,5 +10,9 @@
         <script type="text/javascript" src="scripts/crust.js"></script>
     </head>
 
-    <body></body>
+    <body>
+        <script type="text/javascript">//<![CDATA[
+            
+        //]]></script>
+    </body>
 </html>
