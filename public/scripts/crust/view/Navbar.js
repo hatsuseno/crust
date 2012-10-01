@@ -73,6 +73,8 @@ Ext.define('Crust.view.Navbar', {
                 title: record.get('name'),
                 tabConfig: { closable: true },
 
+                layout: 'fit',
+
                 items: [ 
                     Ext.create(gridName)
                 ]
