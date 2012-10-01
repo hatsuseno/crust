@@ -49,11 +49,7 @@ class EntityHandler extends BaseHandler {
 
         $entity = $this->table->getEntity($id);
 
-        $response->setContent(json_encode(array(
-            'entity' => $entity
-        )));
-
-        return $response;
+        return $response->setEntity($entity);
     }
 
     public function put(Request $request, $id) {
@@ -70,10 +66,6 @@ class EntityHandler extends BaseHandler {
 
         $pk = $this->table->deleteEntity($id);
 
-        $response->setContent(json_encode(array(
-            'success' => true
-        )));
-
-        return $response;
+        return $response->setOK();
     }
 }

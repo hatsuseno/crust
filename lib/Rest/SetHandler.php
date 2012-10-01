@@ -33,13 +33,7 @@ class SetHandler extends BaseHandler {
     public function get(Request $request) {
         $response = new IndexResponse();
 
-        $entities = $this->table->getAll();
-
-        $response->setContent(json_encode(array(
-            'entities' => $entities
-        )));
-
-        return $response;
+        return $response->setCollection($this->table->getAll());
     }
 
     public function post(Request $request) {
@@ -49,11 +43,6 @@ class SetHandler extends BaseHandler {
             $request->getParameter($this->table->getName())
         );
 
-        $response->setContent(json_encode(array(
-            'success' => true,
-            'id' => $pk
-        )));
-
-        return $response;
+        return $this->setOK(array('id' => $pk));
     }
 }

@@ -37,10 +37,6 @@ class IndexHandler extends BaseHandler {
             );
         });
 
-        $response->setContent(json_encode(array(
-            'entity_table' => $tables
-        )));
-
-        return $response;
+        return $response->setMetaEntities($tables);
     }
 }
