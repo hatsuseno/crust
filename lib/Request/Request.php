@@ -13,7 +13,7 @@ class Request {
     protected $parameters;
 
     public static function instantiateCurrentRequest() {
-        $request = new self();
+        $request = new static();
 
         $request->setMethod($_SERVER['REQUEST_METHOD']);
 
