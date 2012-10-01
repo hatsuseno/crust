@@ -10,7 +10,7 @@ Ext.define('Crust.store.EntityTableStore', {
 
         reader: {
             type: 'json',
-            root: 'entity_table'
+            root: 'meta_entities'
         }
     }
 });
