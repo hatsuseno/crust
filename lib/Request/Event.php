@@ -5,6 +5,9 @@ namespace CWX\Crust\Request;
 use CWX\Crust\Event\Event,
     CWX\Crust\Request\Request;
 
+// Old bits from the finished, though unused, Event manager
+// chain. Not sure if it's worth keeping around.
+// TODO: decide above
 class Event extends BaseEvent {
     protected $request;
 
