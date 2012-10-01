@@ -4,7 +4,7 @@ require '../init.php';
 
 use CWX\Crust\Db\Manager as DbManager,
     CWX\Crust\Rest\Dispatch,
-    CWX\Crust\Request\Request;
+    CWX\Crust\Rest\Request;
 
 $dbManager = new DbManager(
     new PDO('dsn', 'user', 'pass')
