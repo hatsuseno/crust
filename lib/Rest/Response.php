@@ -9,22 +9,26 @@ class Response extends BaseResponse {
         $this->setHeader('Content-Type', 'application/json');
     }
 
+    public function setData(array $data) {
+        return $this->setContent(json_encode($data));
+    }
+
     public function setEntity($entity) {
-        return $this->setContent(json_encode(array(
-            'entity' => $entity
-        )));
+        return $this->setData(array('entity' => $entity));
     }
 
     public function setCollection(array $entities) {
-        return $this->setContent(json_encode(array(
-            'entities' => $entities
-        )));
+        return $this->setData(array('entities' => $entities));
+    }
+
+    public function setMetaEntities(array $tables) {
+        return $this->setData(array('entity_table' => $tables));
     }
 
     public function setOK($message = '') {
-        return $this->setContent(json_encode(array(
+        return $this->setData(array(
             'success' => true,
             'message' => $message
-        )));
+        ));
     }
 }
