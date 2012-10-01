@@ -31,20 +31,6 @@ Ext.define('Crust.view.Navbar', {
             Ext.define(modelName, {
                 extend: 'Ext.data.Model',
                 fields: fields,
-                proxy: {
-                    type: 'rest',
-                    url: '/~dev/crust/rest.php/' + record.get('name'),
-
-                    reader: {
-                        type: 'json',
-                        root: 'entities'
-                    },
-
-                    writer: {
-                        type: 'json',
-                        root: record.get('name')
-                    }
-                }
             });
 
             Ext.define(gridName, {
@@ -56,11 +42,13 @@ Ext.define('Crust.view.Navbar', {
 
                 store: new Ext.create('Ext.data.Store', {
                     autoLoad: true,
+                    autoSync: true,
                     model: modelName,
 
                     proxy: {
                         type: 'rest',
                         url: '/~dev/crust/rest.php/' + record.get('name'),
+                        format: 'json',
                         
                         reader: {
                             type: 'json',
