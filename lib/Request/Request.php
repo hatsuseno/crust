@@ -12,6 +12,7 @@ class Request {
     protected $path;
     protected $parameters;
 
+    // The gory bits of data collection for requests to PHP.
     public static function instantiateCurrentRequest() {
         $request = new static();
 
@@ -41,6 +42,19 @@ class Request {
         return $request;
     }
 
+    // I can't remember why control flow goes through here at this point
+    // and I don't see a real good reason to keep it.
+    // TODO: deprecate this flow-stub
+    public function process(Dispatch $dispatch) {
+        $handler = $dispatch->getRequestHandler($this);
+
+        if(!$handler) {
+            return new NotFoundResponse();
+        }
+
+        return $handler->buildResponse($this);
+    }
+
     public function setMethod($method) {
         $this->method = $method;
 
@@ -61,6 +75,8 @@ class Request {
 
     public function setParameters(array $params) {
         $this->parameters = new Collection($params);
+
+        return $this;
     }
 
     public function getMethod() {
@@ -77,15 +93,5 @@ class Request {
 
     public function getParameter($name, $default = null) {
         return $this->parameters->get($name);
-    }
-
-    public function process(Dispatch $dispatch) {
-        $handler = $dispatch->getRequestHandler($this);
-
-        if(!$handler) {
-            return new NotFoundResponse();
-        }
-
-        return $handler->buildResponse($this);
     }
 }
