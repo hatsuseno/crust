@@ -23,7 +23,7 @@ Ext.define('Crust.view.Navbar', {
                 columns.push({
                     text: field.name,
                     dataIndex: field.name,
-                    editor: 'textfield',
+                    editor: field.type == 'date' ? 'datefield' : 'textfield',
                     flex: 1
                 });
             });
