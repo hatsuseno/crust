@@ -64,13 +64,7 @@ Ext.define('Crust.view.Navbar', {
 
                 plugins: [
                     Ext.create('Ext.grid.plugin.RowEditing', {
-                        clicksToEdit: 1,
-
-                        listeners: {
-                            edit: function(editor, e) {
-                                e.record.commit();
-                            }
-                        }
+                        clicksToEdit: 2,
                     })
                 ]
             });
