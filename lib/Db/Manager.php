@@ -12,6 +12,7 @@ class Manager {
         $this->pdo = $pdo;
     }
 
+    // Simple wrapper around PDO. Push SQL and params, receive array.
     public function query($sql, array $params = array()) {
         $stmt = $this->pdo->prepare($sql);
 
@@ -45,6 +46,7 @@ class Manager {
         return $this->tables;
     }
 
+    // Simple mapper from MySQL's field definition to 'ours'.
     public function getFieldDefinitions($fieldSpec) {
         return array(
             'name' => $fieldSpec['Field'],
@@ -54,6 +56,8 @@ class Manager {
         );
     }
 
+    // Simple mapper from MySQL's field types to 'our's.
+    // (I cheated, this is actually mapped to ExtJS's field type)
     protected static function getFieldType($type) {
         if(preg_match('#^(tiny|big)?int#', $type)) return 'int';
         if(preg_match('#^varchar|text#', $type)) return 'string';
