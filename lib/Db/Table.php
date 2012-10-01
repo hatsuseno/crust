@@ -41,10 +41,11 @@ class Table {
         );
     }
 
-    public function getAll() {
+    public function getAll($start = 0, $limit = 0) {
         return $this->manager->query(sprintf(
-            "SELECT * FROM `%s`",
-            $this->name
+            "SELECT * FROM `%s`%s",
+            $this->name,
+            $limit ? " LIMIT $start, $limit" : ''
         ));
     }
 

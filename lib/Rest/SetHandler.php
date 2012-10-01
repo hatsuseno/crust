@@ -33,7 +33,10 @@ class SetHandler extends BaseHandler {
     public function get(Request $request) {
         $response = new IndexResponse();
 
-        return $response->setCollection($this->table->getAll());
+        return $response->setCollection($this->table->getAll(
+            intval($request->getParameter('start', 0)),
+            intval($request->getParameter('limit', 0))
+        ));
     }
 
     public function post(Request $request) {
