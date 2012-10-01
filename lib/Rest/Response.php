@@ -22,7 +22,7 @@ class Response extends BaseResponse {
     }
 
     public function setMetaEntities(array $tables) {
-        return $this->setData(array('entity_table' => $tables));
+        return $this->setData(array('meta_entities' => $tables));
     }
 
     public function setOK($message = '') {
