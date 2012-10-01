@@ -69,7 +69,9 @@ Ext.define('Crust.view.Navbar', {
                 ]
             });
 
-            Ext.getCmp('resourceview').add({
+            var resourceView = Ext.getCmp('resourceview');
+
+            var tab = resourceView.add({
                 title: record.get('name'),
                 tabConfig: { closable: true },
 
@@ -79,6 +81,8 @@ Ext.define('Crust.view.Navbar', {
                     Ext.create(gridName)
                 ]
             });
+
+            resourceView.setActiveTab(tab);
         }
     }
 });
